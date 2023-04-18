@@ -23,6 +23,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/topic',
+      name: 'topic',
+      component: () => import('../views/TopicView.vue'),
+      meta: {
+        title: 'Topic'
+      }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'notfound',
       component: () => import('../views/NotFoundView.vue'),
