@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import Sidebar from './components/Sidebar.vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { sidebarState } from './services/SidebarState';
 </script>
 
 <template>
+  <button @click="sidebarState.isShrink = !sidebarState.isShrink">Toggle</button>
+  <Sidebar/>
   <header>
     <div class="wrapper">
       <nav>
@@ -14,7 +18,3 @@ import { RouterLink, RouterView } from 'vue-router'
 
   <RouterView />
 </template>
-
-<style scoped>
-
-</style>
