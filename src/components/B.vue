@@ -1,1 +1,0 @@
-<template>B component</template>
