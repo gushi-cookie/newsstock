@@ -34,8 +34,7 @@ import { modalState, closeModal } from '../services/ModalService'
     background-color: rgba(0, 0, 0, 0.6);
 }
 .main-modal__container {
-    margin-top: -150px;
-    width: 650px;
+    max-width: 650px;
     height: auto;
 }
 .main-modal__closed {

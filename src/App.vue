@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Modal from './components/Modal.vue';
 import Sidebar from './components/Sidebar.vue'
+import LocaleSettings from './components/LocaleSettings.vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { sidebarState } from './services/SidebarState';
 </script>
@@ -15,6 +16,7 @@ import { sidebarState } from './services/SidebarState';
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+      <LocaleSettings/>
     </div>
   </header>
 
