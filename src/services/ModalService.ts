@@ -1,24 +1,34 @@
-import { reactive } from 'vue'
+import { defineAsyncComponent, shallowReactive, type Component } from 'vue'
+
 
 export interface ModalState {
-    componentName: string,
+    component: Component | null,
     title: string,
     isOpen: boolean,
 }
 
-export const modalState = reactive({
-    componentName: '',
+export const modalState = shallowReactive<ModalState>({
+    component: null, 
     title: '',
     isOpen: false,
 });
 
-export function openModal(title: string, name: string) {
+/**
+ * Open modal with a specific component inside.
+ * @param title Modal title.
+ * @param componentName Name of a component file.
+ */
+export function openModal(title: string, componentName: string) {
+    modalState.component = defineAsyncComponent(() => import(`@/components/${componentName}.vue`));
     modalState.title = title;
-    modalState.componentName = name;
+    modalState.isOpen = true;
 };
 
+/**
+ * Clear modalState object.
+ */
 export function closeModal() {
     modalState.isOpen = false;
-    modalState.componentName = '';
+    modalState.component = null;
     modalState.title = '';
 }
