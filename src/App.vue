@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Modal from './components/Modal.vue';
 import Sidebar from './components/Sidebar.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { sidebarState } from './services/SidebarState';
@@ -7,6 +8,7 @@ import { sidebarState } from './services/SidebarState';
 <template>
   <button @click="sidebarState.isShrink = !sidebarState.isShrink">Toggle</button>
   <Sidebar/>
+  <Modal/>
   <header>
     <div class="wrapper">
       <nav>
