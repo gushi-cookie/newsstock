@@ -14,7 +14,6 @@ import { sidebarState } from '../services/SidebarState'
     width: 20%;
     overflow-x: hidden;
     transition: 0.5s;
-    height: 500px;
 }
 
 .sidebar::-webkit-scrollbar {
