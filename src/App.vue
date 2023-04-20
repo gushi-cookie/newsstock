@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import Modal from './components/Modal.vue';
+import Modal from './components/Modal.vue'
 import Sidebar from './components/Sidebar.vue'
-import LocaleSettings from './components/LocaleSettings.vue';
-import { RouterLink, RouterView } from 'vue-router'
-import { sidebarState } from './services/SidebarState';
+import Header from './components/Header.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <button @click="sidebarState.isShrink = !sidebarState.isShrink">Toggle</button>
+  <Header/>
   <Sidebar/>
+  <RouterView/>
   <Modal/>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-      <LocaleSettings/>
-    </div>
-  </header>
-
-  <RouterView />
 </template>
+
+<style>
+
+</style>
