@@ -11,7 +11,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Home page'
+        title: 'Newsstock'
       },
     },
     {
@@ -19,7 +19,7 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
       meta: {
-        title: 'About this project'
+        title: 'About project'
       },
     },
     {
@@ -41,7 +41,7 @@ const router = createRouter({
   ]
 });
 
-const DEFAULT_TITLE = 'NewsStock';
+const DEFAULT_TITLE = 'Newsstock';
 router.afterEach((to, from) => {
   nextTick(() => {
     document.title = to.meta.title as string || DEFAULT_TITLE;
