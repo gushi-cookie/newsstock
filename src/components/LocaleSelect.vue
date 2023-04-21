@@ -20,7 +20,7 @@ onMounted(() => {
 .locale-select {
     width: 400px;
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-x: hidden;
     padding-right: 4px;
 }
 
@@ -32,5 +32,12 @@ onMounted(() => {
 }
 .locale-select::-webkit-scrollbar-track {
     border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+@media (max-width: 500px) {
+.locale-select {
+    max-height: none;
+    width: 100%;
+}
 }
 </style>

@@ -34,13 +34,15 @@ import { modalState, closeModal } from '../services/ModalService'
 
     background-color: rgba(0, 0, 0, 0.6);
 }
+.main-modal__closed {
+    display: none;
+}
+
 .main-modal__container {
     max-width: 650px;
     height: auto;
 }
-.main-modal__closed {
-    display: none;
-}
+
 .main-modal__header {
     display: flex;
     align-items: center;
@@ -51,7 +53,18 @@ import { modalState, closeModal } from '../services/ModalService'
 .main-modal__btn-close {
     margin-left: auto;
 }
-.main-modal__body {
 
+
+@media (max-width: 500px) {
+.main-modal__container {
+    max-width: none;
+    width: 95%;
+    height: 90% !important;
+}
+.main-modal__body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 }
 </style>
