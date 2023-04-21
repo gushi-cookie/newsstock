@@ -27,6 +27,7 @@ const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
                     <span class="n-item__lang">{{ language }}</span>
                     <span class="n-item__country">{{ sourceCountry }}</span>
                 </div>
+                <div class="n-item__footer-br"/>
                 <span class="n-item__domain">{{ domain }}</span>
                 <div class="n-item__links">
                     <a class="n-item__link" target="_blank" :href="topicUrl">VIEW</a>
@@ -65,7 +66,7 @@ const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
 
 .n-item__footer {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -112,5 +113,30 @@ const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
 }
 .n-item__link-unsafe {
 
+}
+
+
+@media (max-width: 630px) {
+.n-item__main {
+    padding-bottom: 18px;
+}
+.n-item__title {
+    font-size: 15px;
+}
+.n-item__locale {
+    order: 2;
+    margin-top: 8px;
+}
+.n-item__footer-br {
+    width: 100%;
+    order: 1;
+}
+.n-item__domain {
+    order: 0;
+}
+.n-item__links {
+    order: 3;
+    margin-top: 8px;
+}
 }
 </style>
