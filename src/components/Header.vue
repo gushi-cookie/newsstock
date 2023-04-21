@@ -2,6 +2,7 @@
 import LocaleSettings from './LocaleSettings.vue'
 import { RouterLink } from 'vue-router'
 import { sidebarState } from '@/services/SidebarState'
+import SearchBar from './SearchBar.vue'
 </script>
 
 <template>
@@ -17,6 +18,8 @@ import { sidebarState } from '@/services/SidebarState'
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/about">About</RouterLink>
         </nav>
+        <div class="header__break"></div>
+        <SearchBar/>
         <LocaleSettings/>
     </header>
 </template>
@@ -24,6 +27,7 @@ import { sidebarState } from '@/services/SidebarState'
 <style>
 .header {
     display: flex;
+    flex-flow: row wrap;
     background-color: #1976d2;
     height: 64px;
     color: #fff;
@@ -71,6 +75,25 @@ import { sidebarState } from '@/services/SidebarState'
     margin-right: 20px;
 }
 
+.header .search-bar {
+    margin-left: auto;
+}
+
+
+@media (max-width: 900px) {
+.header {
+    height: 90px;
+    padding-bottom: 7px;
+}
+.header__break {
+    order: 1;
+    width: 100%;
+}
+.header .search-bar {
+    order: 2;
+    margin: 0 auto;
+}
+}
 
 @media (max-width: 500px) {
 .header__btn-toggle {
