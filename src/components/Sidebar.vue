@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import PublishersList from './PublishersList.vue'
 import { sidebarState } from '../services/SidebarState'
+
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+if(vw <= 500) sidebarState.isShrink = true;
 </script>
 
 <template>
@@ -11,7 +14,7 @@ import { sidebarState } from '../services/SidebarState'
 
 <style>
 .sidebar {
-    width: 20%;
+    width: 275px;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -31,5 +34,12 @@ import { sidebarState } from '../services/SidebarState'
 }
 .sidebar__shrink::-webkit-scrollbar {
     display: none;
+}
+
+
+@media (max-width: 500px) {
+.sidebar__shrink {
+    width: 0;
+}
 }
 </style>

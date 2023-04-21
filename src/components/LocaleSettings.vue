@@ -5,7 +5,7 @@ import { getCurrentLocale } from '@/services/LocaleService'
 
 <template>
     <div class="locale-settings" @click="openModal('Select search language.', 'LocaleSelect')">
-        <span class="locale-settings__lang">Language</span>
+        <span class="locale-settings__lang">Search in</span>
         <span class="locale-settings__icon" v-html="getCurrentLocale().icon"></span>
     </div>
 </template>

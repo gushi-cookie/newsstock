@@ -70,4 +70,21 @@ import { sidebarState } from '@/services/SidebarState'
     margin-left: auto;
     margin-right: 20px;
 }
+
+
+@media (max-width: 500px) {
+.header__btn-toggle {
+    margin: 0;
+    margin-left: 8px;
+}
+.header__nav a {
+    padding: 8px 8px;
+}
+.header .locale-settings {
+    margin-right: 8px;
+}
+.locale-settings__lang {
+    display: none;
+}
+}
 </style>
