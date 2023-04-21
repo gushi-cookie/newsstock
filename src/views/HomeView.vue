@@ -8,3 +8,10 @@ import NewsList from '../components/NewsList.vue'
     <NewsList/>
   </main>
 </template>
+
+<style>
+.news-container {
+    width: 720px;
+    margin: 0 auto;
+}
+</style>

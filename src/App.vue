@@ -35,6 +35,7 @@ import { RouterView } from 'vue-router'
   flex-shrink: 0;
 }
 .main {
+  background-color: #fafafa;
   overflow-x: hidden;
   flex-grow: 1;
 }
