@@ -9,7 +9,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { sidebarState } from '@/services/SidebarState';
 
+sidebarState.isShrink = true;
 const url = ref<string>('');
 const urlExtracted = ref<boolean>(true);
 
@@ -36,10 +38,17 @@ onMounted(() => {
 
 
 <template>
-<main>
-    <iframe v-if="urlExtracted" id="frame" width="1200px" height="700px"></iframe>
+<main class="main__topic">
+    <iframe v-if="urlExtracted" id="frame"></iframe>
     <div v-if="!urlExtracted" class="fail">
         <h1>Couldn't extract the url.</h1>
     </div>
 </main>
 </template>
+
+<style>
+.main__topic iframe {
+    width: 100%;
+    height: 97%;
+}
+</style>
