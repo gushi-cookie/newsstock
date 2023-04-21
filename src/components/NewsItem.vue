@@ -18,21 +18,99 @@ const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
 </script>
 
 <template>
-    <div class="news-item">
-        <div class="image-container">
-            <img class="image" :src="imageLink">
-        </div>
-        <div class="content">
-            <h2 class="title">{{ title }}</h2>
-            <div class="footer">
-                <div class="locale">
-                    <span class="language">{{ language }}</span>
-                    <span class="country">{{ sourceCountry }}</span>
+    <div class="n-item">
+        <div class="n-item__image" :style="{ backgroundImage: `url(${imageLink})` }"></div>
+        <div class="n-item__main">
+            <h3 class="n-item__title">{{ title }}</h3>
+            <div class="n-item__footer">
+                <div class="n-item__locale">
+                    <span class="n-item__lang">{{ language }}</span>
+                    <span class="n-item__country">{{ sourceCountry }}</span>
                 </div>
-                <span class="domain">{{ domain }}</span>
-                <a class="topic-link" target="_blank" :href="topicUrl">View</a>
-                <a class="origin-link" :class="{ 'origin-unsafe': !isOriginSafe }" target="_blank" :href="originUrl">Origin</a>
+                <span class="n-item__domain">{{ domain }}</span>
+                <div class="n-item__links">
+                    <a class="n-item__link" target="_blank" :href="topicUrl">VIEW</a>
+                    <a class="n-item__link" :class="{ 'n-item__link-unsafe': !isOriginSafe }" target="_blank" :href="originUrl">ORIGIN</a>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
+<style>
+.n-item {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.n-item__image {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.n-item__main {
+    padding: 18px 7px 14px 14px;
+}
+.n-item__title {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.n-item__footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.n-item__locale {
+    color: #fff;
+    font-weight: 500;
+    background-color: #424242;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 4px 12px;
+}
+.n-item__lang {
+    border-right: 2px solid #fafafa;
+    padding-right: 6px;
+    margin-right: 6px;
+}
+.n-item__country {
+
+}
+
+.n-item__domain {
+    text-decoration: underline;
+}
+
+.n-item__link:first-child {
+    margin-right: 8px;
+}
+.n-item__link {
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff !important;
+    background-color: #2196f3;
+    padding: 8px 8px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.n-item__link:hover {
+    filter: brightness(0.93);
+}
+.n-item__link:active {
+    filter: brightness(0.85);
+}
+.n-item__link-unsafe {
+
+}
+</style>

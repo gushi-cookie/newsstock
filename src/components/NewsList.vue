@@ -27,7 +27,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="news-item-container">
+    <div class="news-container">
         <NewsItem v-for="prop in newsProps" v-bind="prop" />
     </div>
 </template>
