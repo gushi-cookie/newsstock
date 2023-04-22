@@ -16,10 +16,14 @@ import { getCurrentLocale } from '@/services/LocaleService'
     padding: 5px;
     border: 1px solid #a2d1ff;
     border-radius: 6px;
+    background-color: #2196f3;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .locale-settings:hover {
-    opacity: 0.75;
+    filter: brightness(0.93);
+}
+.locale-settings:active {
+    filter: brightness(0.89);
 }
 
 .locale-settings__lang {
@@ -32,7 +36,6 @@ import { getCurrentLocale } from '@/services/LocaleService'
     height: 14px;
     border: 3px solid #e6e6e6;
     border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     vertical-align: -5px;
 }
 .locale-settings__icon > svg {
