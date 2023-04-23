@@ -12,7 +12,7 @@ onMounted(() => {
 
 <template>
     <div class="locale-select list-group">
-        <LocaleItem class="list-group-item list-group-item-action" v-for="l in locales" :icon="l.icon" :country="l.name" />
+        <LocaleItem class="list-group-item list-group-item-action" v-for="l in locales" v-bind="l" />
     </div>
 </template>
 
