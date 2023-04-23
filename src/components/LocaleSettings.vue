@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { openModal } from '@/services/ModalService'
-import { getCurrentLocale } from '@/services/LocaleService'
+import { locale } from '@/services/LocaleService'
 </script>
 
 <template>
-    <div class="locale-settings" @click="openModal('Select search language.', 'LocaleSelect')">
+    <div class="locale-settings" @click="openModal('Select search country and language.', 'LocaleSelect')" :title="locale?.name">
         <span class="locale-settings__lang">Search in</span>
-        <span class="locale-settings__icon" v-html="getCurrentLocale().icon"></span>
+        <span class="locale-settings__icon" v-html="locale?.icon"></span>
     </div>
 </template>
 

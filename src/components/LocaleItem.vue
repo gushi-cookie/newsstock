@@ -1,19 +1,36 @@
 <script setup lang="ts">
-defineProps<{
-    country: string,
+import * as LocaleService from '@/services/LocaleService'
+import { closeModal } from '@/services/ModalService'
+
+const props = defineProps<{
+    name: string,
+    languageCode: string,
+    countryCode: string,
     icon: string,
 }>();
+
+function clickHandler(event: MouseEvent) {
+    let locale = LocaleService.getLocale(props.countryCode, props.languageCode);
+    if(locale) {
+        LocaleService.setLocale(locale);
+        closeModal();
+    }
+};
 </script>
 
 <template>
-    <div class="locale-item">
-        <span class="locale-item__icon" v-html="icon"></span>
-        <span class="locale-item__country">{{ country }}</span>
+    <div class="locale-item" @click="clickHandler($event)">
+        <span class="locale-item__icon" v-html="props.icon"></span>
+        <span class="locale-item__country">{{ props.name }}</span>
+        <span class="locale-item__lang">{{ props.languageCode }}</span>
     </div>
 </template>
 
 <style>
 .locale-item {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -28,6 +45,9 @@ defineProps<{
 }
 .locale-item__country {
     font-size: 1.1em;
-    vertical-align: -6px;
+}
+.locale-item__lang {
+    font-size: 1.1em;
+    margin-left: auto;
 }
 </style>
