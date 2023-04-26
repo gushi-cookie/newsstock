@@ -5,8 +5,8 @@
       Project utilizes GDELT 2.0 API to get fresh news from Internet. The goal is to practice Vue3 with TypeScript, and some Bootstrap.
     </p>
     <div class="card main__about-ref">
-      <a href="/news-website.png" target="_blank">
-        <img class="card-img-top" src="/news-website.png">
+      <a href="/images/news-website.png" target="_blank">
+        <img class="card-img-top" src="/images/news-website.png">
       </a>
       <div class="card-body">
         <h5 class="card-title">Reference of this project.</h5>
