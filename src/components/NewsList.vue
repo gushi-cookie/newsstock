@@ -17,6 +17,7 @@ function toNewsItemProps(articles: Article[]): NewsItemProps[] {
             originUrl: articles[i].url,
             sourceCountry: articles[i].sourcecountry,
             title: articles[i].title,
+            seenDate: articles[i].seendate,
         });
     }
     return result;

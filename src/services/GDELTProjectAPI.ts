@@ -65,6 +65,12 @@ function checkEmptyFields(obj: any, fields: string[]): boolean {
     return false;
 }
 
+function toNormalUTC(articleUTC: string): string {
+    // An article UTC date example: 20230304T123000Z
+    // An UTC date example: 2023-04-26T04:01:14Z
+    let s = articleUTC;
+    return `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}T${s.slice(9, 11)}:${s.slice(11, 13)}:${s.slice(13, 15)}Z`;
+}
 
 /**
  * Make https request to GDELT api, with options.
@@ -91,6 +97,7 @@ async function fetchNews(searchPhrase: string, languageCode: string | null, coun
     let articles: Article[] = result.data.articles;
     for(let i = 0; i < articles.length; i++) {
         if(isArticle(articles[i]) && !checkEmptyFields(articles[i], requiredResponseFields)) {
+            articles[i].seendate = toNormalUTC(articles[i].seendate);
             completeArticles.push(articles[i]);
         }
     }

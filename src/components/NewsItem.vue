@@ -6,6 +6,7 @@ export interface Props {
     language: string,
     sourceCountry: string,
     domain: string,
+    seenDate: string,
 }
 </script>
 
@@ -15,14 +16,19 @@ import { computed } from 'vue';
 const props = defineProps<Props>();
 const isOriginSafe = (new URL(props.originUrl)).protocol === 'https:' ? true : false;
 const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
+
+const date = (new Date(props.seenDate)).toLocaleString('en-US');
 </script>
 
 <template>
     <div class="n-item">
-        <div class="n-item__image" :style="{ backgroundImage: `url(${imageLink})` }"></div>
+        <div class="n-item__image" :style="{ backgroundImage: `url(${imageLink}), url('/images/preview-not-found.png')` }"></div>
         <div class="n-item__main">
             <h3 class="n-item__title">{{ title }}</h3>
             <div class="n-item__footer">
+                <div class="n-item__date">
+                    <span>{{ date }}</span>
+                </div>
                 <div class="n-item__locale">
                     <span class="n-item__lang">{{ language }}</span>
                     <span class="n-item__country">{{ sourceCountry }}</span>
@@ -71,6 +77,12 @@ const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
     align-items: center;
 }
 
+.n-item__date {
+    flex-shrink: 0;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
 .n-item__locale {
     color: #fff;
     font-weight: 500;
@@ -130,6 +142,10 @@ const topicUrl = computed(() => `/topic?u=${props.originUrl}`);
 .n-item__footer-br {
     width: 100%;
     order: 1;
+}
+.n-item__date {
+    width: auto;
+    margin-bottom: 0;
 }
 .n-item__domain {
     order: 0;
