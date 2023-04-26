@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import NewsList from '../components/NewsList.vue'
+import { onMounted } from 'vue'
+import { search } from '@/services/SearchService'
+
+onMounted(() => {
+  search();
+});
 </script>
 
 <template>
