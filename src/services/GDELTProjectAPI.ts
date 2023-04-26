@@ -12,6 +12,12 @@ class InvalidGDELTResponseError extends Error {
     };
 }
 
+class InsufficientQuerySizeError extends Error {
+    constructor(message: string) {
+        super(message);
+    }
+}
+
 
 export interface Article {
     domain: string,
@@ -65,7 +71,7 @@ function checkEmptyFields(obj: any, fields: string[]): boolean {
  * @param searchPrase search phrase.
  * @param languageCode ISO-639-2/T code of a language.
  * @param countryCode ISO-3166-1/Alpha-2 code of a country.
- * @throws { AxiosError, InvalidGDELTResponseError }
+ * @throws { AxiosError, InvalidGDELTResponseError, InsufficientQuerySizeError }
  */
 async function fetchNews(searchPhrase: string, languageCode: string | null, countryCode: string | null): Promise<Article[]> {
     let params = new URLSearchParams();
@@ -75,7 +81,9 @@ async function fetchNews(searchPhrase: string, languageCode: string | null, coun
     params.append('format', 'json');
 
     let result = await axios.get(`https://api.gdeltproject.org/api/v2/doc/doc`, { params });
-    if(!result.data || !result.data.articles) {
+    if(result.data === 'Your query was too short or too long.\n') {
+        throw new InsufficientQuerySizeError('Query is too short or too long.');
+    } else if(!result.data?.articles) {
         throw new InvalidGDELTResponseError('Couldn\'t find data.articles property in the response object.', result);
     }
 
@@ -95,4 +103,5 @@ export default {
     checkEmptyFields,
     fetchNews,
     InvalidGDELTResponseError,
+    InsufficientQuerySizeError,
 }

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import NewsItem from './NewsItem.vue'
 import type { Props as NewsItemProps } from './NewsItem.vue'
-import { onMounted, ref, type Ref } from 'vue'
-import GDELTProjectAPI, { type Article } from '@/services/GDELTProjectAPI'
+import { ref, watch, type Ref } from 'vue'
+import * as SearchService from '@/services/SearchService'
+import type { Article } from '@/services/GDELTProjectAPI'
 
 const newsProps: Ref<NewsItemProps[]> = ref([]);
 
@@ -21,8 +22,8 @@ function toNewsItemProps(articles: Article[]): NewsItemProps[] {
     return result;
 }
 
-onMounted(async () => {
-    newsProps.value.push(...toNewsItemProps(await GDELTProjectAPI.fetchNews('Television', null, null)));
+watch(() => SearchService.searchResult.value, (newResult) => {
+    newsProps.value = toNewsItemProps(newResult);
 });
 </script>
 

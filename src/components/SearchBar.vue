@@ -1,12 +1,17 @@
 <script setup lang="ts">
-
+import * as SearchService from '@/services/SearchService'
 </script>
 
 <template>
     <div class="search-bar">
-        <input class="search-bar__input">
-        <img class="search-bar__reset-btn" src="/icons/round-close.svg">
-        <div class="search-bar__search-wrap">
+        <input class="search-bar__input" v-model="SearchService.searchString.value" @keyup.enter="SearchService.search()">
+        <img
+            class="search-bar__reset-btn"
+            src="/icons/round-close.svg"
+            v-if="SearchService.searchString.value.length > 0"
+            @click="SearchService.searchString.value = ''"
+        >
+        <div class="search-bar__search-wrap" @click="SearchService.search()">
             <img class="search-bar__search-btn" src="/icons/search.svg">
         </div>
     </div>
@@ -34,7 +39,6 @@
     outline: none;
 }
 .search-bar__reset-btn {
-    display: none;
     position: absolute;
     width: 20px;
     right: 36px;
