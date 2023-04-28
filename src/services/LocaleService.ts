@@ -15,7 +15,7 @@ function anyIcon(): string {
 export const locales: Locale[] = [
     { languageCode: 'any', countryCode: 'any', icon: anyIcon(), name: 'Search everywhere' },
     { languageCode: 'spa', countryCode: 'AR', icon: Flags.AR, name: 'Argentina' },
-    { languageCode: 'en', countryCode: 'AS', icon: Flags.AU, name: 'Australia' },
+    { languageCode: 'eng', countryCode: 'AS', icon: Flags.AU, name: 'Australia' },
     { languageCode: 'deu', countryCode: 'AU', icon: Flags.AT, name: 'Austria' },
     { languageCode: 'rus', countryCode: 'BO', icon: Flags.BY, name: 'Belarus' },
     { languageCode: 'nld', countryCode: 'BE', icon: Flags.BE, name: 'Belgium' },
@@ -25,7 +25,7 @@ export const locales: Locale[] = [
     { languageCode: 'ell', countryCode: 'CY', icon: Flags.CY, name: 'Cyprus' },
     { languageCode: 'ces', countryCode: 'EZ', icon: Flags.CZ, name: 'Czech Republic' },
     { languageCode: 'dan', countryCode: 'DA', icon: Flags.DK, name: 'Denmark' },
-    { languageCode: 'en', countryCode: 'DO', icon: Flags.DO, name: 'Dominica' },
+    { languageCode: 'eng', countryCode: 'DO', icon: Flags.DO, name: 'Dominica' },
     { languageCode: 'ara', countryCode: 'EG', icon: Flags.EG, name: 'Egypt' },
     { languageCode: 'fin', countryCode: 'FI', icon: Flags.FI, name: 'Finland' },
     { languageCode: 'fra', countryCode: 'FR', icon: Flags.FR, name: 'France' },
@@ -46,8 +46,8 @@ export const locales: Locale[] = [
     { languageCode: 'zho', countryCode: 'TW', icon: Flags.TW, name: 'Taiwan' },
     { languageCode: 'tur', countryCode: 'TU', icon: Flags.TR, name: 'Turkey' },
     { languageCode: 'ukr', countryCode: 'UP', icon: Flags.UA, name: 'Ukraine' },
-    { languageCode: 'en', countryCode: 'UK', icon: Flags.GB, name: 'United Kingdom' },
-    { languageCode: 'en', countryCode: 'US', icon: Flags.US, name: 'United States' },
+    { languageCode: 'eng', countryCode: 'UK', icon: Flags.GB, name: 'United Kingdom' },
+    { languageCode: 'eng', countryCode: 'US', icon: Flags.US, name: 'United States' },
     { languageCode: 'spa', countryCode: 'VE', icon: Flags.VE, name: 'Venezuela' },
 ];
 
