@@ -77,13 +77,19 @@ function toNormalUTC(articleUTC: string): string {
  * @param searchPrase search phrase.
  * @param languageCode ISO-639-2/T code of a language.
  * @param countryCode ISO-3166-1/Alpha-2 code of a country.
+ * @param domain Domain name where to search. If the domain starts with '!' character, then the strict domain search mode is enabled.
  * @throws { AxiosError, InvalidGDELTResponseError, InsufficientQuerySizeError }
  */
-async function fetchNews(searchPhrase: string, languageCode: string | null, countryCode: string | null): Promise<Article[]> {
+async function fetchNews(searchPhrase: string, languageCode: string | null, countryCode: string | null, domain: string | null): Promise<Article[]> {
     let params = new URLSearchParams();
     languageCode = languageCode ? ` sourcelang:${languageCode}` : '';
     countryCode = countryCode ? ` sourcecountry:${countryCode}` : '';
-    params.append('query', `${searchPhrase}${languageCode}${countryCode}`);
+    if(domain) {
+        domain = domain.startsWith('!') ? ` domainis:${domain.slice(1)}` : ` domain:${domain}`;
+    } else {
+        domain = '';
+    }
+    params.append('query', `${searchPhrase}${languageCode}${countryCode}${domain}`);
     params.append('format', 'json');
 
     let result = await axios.get(`https://api.gdeltproject.org/api/v2/doc/doc`, { params });

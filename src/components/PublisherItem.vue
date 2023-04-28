@@ -1,15 +1,31 @@
 <script setup lang="ts">
-defineProps<{
-    iconUrl: string,
-    name: string,
+import * as SearchService from '@/services/SearchService'
+import type { Publisher } from '@/services/PublishersAPI'
+
+const props = defineProps<{
+    publisher: Publisher,
     isShrink: boolean,
 }>();
+
+function clickHandler(event: MouseEvent) {
+    if(SearchService.selectedPublisher.value === props.publisher) {
+        SearchService.selectedPublisher.value = null;
+    } else {
+        SearchService.selectedPublisher.value = props.publisher;
+    }
+    SearchService.search();
+};
 </script>
 
 <template>
-    <div class="publisher" :title="name" :class="{ 'publisher__shrink': isShrink }">
-        <img class="icon" :src="iconUrl">
-        <span class="name">{{ name }}</span>
+    <div
+        class="publisher"
+        :title="publisher.name"
+        :class="{ 'publisher__shrink': isShrink, 'publisher__selected': SearchService.selectedPublisher.value === publisher }"
+        @click="clickHandler($event)"
+    >
+        <img class="icon" :src="publisher.iconUrl">
+        <span class="name">{{ publisher.name }}</span>
     </div>
 </template>
 
@@ -31,6 +47,12 @@ defineProps<{
 }
 .publisher:hover {
     background-color: #0d7bd3;
+}
+.publisher:active {
+    filter: brightness(0.96);
+}
+.publisher__selected {
+    background-color: #2686d3;
 }
 .publisher__shrink {
     padding-left: 12px;

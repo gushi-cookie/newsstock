@@ -13,9 +13,14 @@ export async function search() {
     let languageCode = locale.languageCode === 'any' ? null : locale.languageCode;
     let countryCode = locale.countryCode === 'any' ? null : locale.countryCode;
 
+    let searchPhrase = searchString.value;
+    if(selectedPublisher.value?.domainPath) {
+        searchPhrase += ` ${selectedPublisher.value.domainPath}`;
+    }
+
     try {
-        searchResult.value = await GDELTProjectAPI.fetchNews(searchString.value, languageCode, countryCode);
-    } catch(error) {
+        searchResult.value = await GDELTProjectAPI.fetchNews(searchPhrase, languageCode, countryCode, selectedPublisher.value?.searchDomain ?? null);
+    } catch(error: any) {
         if(error instanceof GDELTProjectAPI.InsufficientQuerySizeError) {
             alert('Your query is too short or too long!');
         } else if(error instanceof GDELTProjectAPI.InvalidGDELTResponseError) {
@@ -24,5 +29,6 @@ export async function search() {
             alert('An unknown error just happened.');
         }
         console.log(error);
+        console.log(error.response);
     }
 }
