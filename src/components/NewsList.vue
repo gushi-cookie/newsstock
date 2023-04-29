@@ -4,6 +4,7 @@ import type { Props as NewsItemProps } from './NewsItem.vue'
 import { ref, nextTick, watch, computed, type Ref } from 'vue'
 import * as SearchService from '@/services/SearchService'
 import type { Article } from '@/services/GDELTProjectAPI'
+import { routerComponent } from '@/services/LayoutService'
 
 const NEWS_LIMIT = 20;
 const NEWS_OFFSET = 5;
@@ -25,6 +26,7 @@ const displayLoadButton = computed<boolean>(() => {
 watch(() => SearchService.searchResult.value, (newResult) => {
     offsetIndex.value = 0;
     newsProps.value = toNewsItemProps(newResult.slice(0, NEWS_LIMIT));
+    routerComponent.value.$el.scrollTop = 0;
 });
 
 function toNewsItemProps(articles: Article[]): NewsItemProps[] {
