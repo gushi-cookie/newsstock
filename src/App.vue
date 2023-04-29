@@ -4,13 +4,20 @@ import Sidebar from './components/Sidebar.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import { RouterView } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import * as LayoutService from '@/services/LayoutService'
+
+const routerComponent = ref();
+onMounted(() => {
+  LayoutService.routerComponent.value = routerComponent.value;
+});
 </script>
 
 <template>
   <Header/>
   <div class="app__wrap">
     <Sidebar/>
-    <RouterView class="main" />
+    <RouterView class="main" ref="routerComponent" />
   </div>
   <Footer/>
   <Modal/>
