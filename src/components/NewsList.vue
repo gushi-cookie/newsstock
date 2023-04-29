@@ -63,7 +63,7 @@ function loadClickHandler() {
 <template>
     <div class="news-list">
         <div class="news-list__container" ref="listElement">
-            <NewsItem v-for="prop in newsProps" v-bind="prop" />
+            <NewsItem v-for="prop in newsProps" :key="prop.originUrl" v-bind="prop" />
         </div>
         <div class="news-list__more-btn" @click="loadClickHandler" v-if="displayLoadButton">Load More</div>
     </div>
