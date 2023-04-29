@@ -19,23 +19,23 @@ onMounted(() => {
   padding-top: 22px;
 }
 
-.news-container {
+.news-list {
     width: 720px;
     margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
-  .news-container {
+  .news-list {
     width: 500px;
   }
 }
 @media (max-width: 630px) {
-  .news-container {
+  .news-list {
     width: 400px;
   }
 }
 @media (max-width: 440px) {
-  .news-container {
+  .news-list {
     width: 300px;
   }
 }
